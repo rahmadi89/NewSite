@@ -427,7 +427,7 @@ const selectedPalette = colorPalettes[currentPaletteName]
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "بلاگ من",
+    pageTitle: "وبسایت شخصی روح اله احمدی",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -435,7 +435,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "fa-IR",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "RouhollahAhmadi.ir",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
