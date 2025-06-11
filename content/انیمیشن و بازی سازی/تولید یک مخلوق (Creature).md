@@ -1,3 +1,6 @@
+---
+Status: Done
+---
 ![[Pixar_Heroes.webp]]
 
 ## 👤 نقش‌ها و وظایف در تولید یک Creature (موجود خیالی یا واقعی)

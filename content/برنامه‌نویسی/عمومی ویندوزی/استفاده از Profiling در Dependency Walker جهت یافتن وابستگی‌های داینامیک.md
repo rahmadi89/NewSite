@@ -1,6 +1,7 @@
 ---
 Reference: https://www.dependencywalker.com/help/html/application_profiling.htm
 title: استفاده از Profiling در Dependency Walker جهت یافتن وابستگی‌های داینامیک
+Status: Done
 ---
 ## مقدمه
 نسخه ۲.۰ از Dependency Walker یه قابلیت جدید به اسم application profiling اضافه کرده. این یعنی می‌تونه یه برنامه در حال اجرا رو زیر نظر بگیره و ببینه چه ماژول‌هایی (modules) رو موقع اجرا لود می‌کنه.  

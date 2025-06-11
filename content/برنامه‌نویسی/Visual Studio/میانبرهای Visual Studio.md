@@ -1,3 +1,6 @@
+---
+Status: Need To complete
+---
 از اونجایی که استفاده از کیبورد میتونه خیلی وقت‌ها ساده‌تر و مفید‌تر از ماوس باشه، برای اینکه مجبور به سوئیچ کردن بین ماوس و کیبورد نباشیم، استفاده از میانبر یا همون ShortKey ها بسیار ضروریه.
 لیست میانبرهای دیفالت Visual Studio از [این لینک](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/ide/default-keyboard-shortcuts-in-visual-studio?view=vs-2015&redirectedfrom=MSDN) قابل نمایشه.
 منم سعی می‌کنم اونایی که برای خودم مفیدترن رو اینجا قرار بدم (ترتیب خاصی نداره)

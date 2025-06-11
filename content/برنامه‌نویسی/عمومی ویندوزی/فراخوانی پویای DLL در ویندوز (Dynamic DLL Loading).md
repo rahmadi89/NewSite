@@ -1,3 +1,6 @@
+---
+Status: Done
+---
 بعضی وقت‌ها پیش میاد که لازمه به صورت پویا یه DLL رو فراخونی کنیم. مثلا اگه بخوایم از تابع [RtlGetVersion](https://learn.microsoft.com/en-us/windows/win32/devnotes/rtlgetversion) استفاده کنیم، همونطور که توی صفحه مربوطه ش نوشته توی فایل ntdll.dll عه که باید به این صورت اضافه بشه به پروژه:
 ```cpp
 #incldue <Ntddk.h>
