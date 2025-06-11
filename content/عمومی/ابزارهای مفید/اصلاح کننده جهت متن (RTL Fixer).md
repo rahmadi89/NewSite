@@ -24,7 +24,7 @@
 
 بعضی برنامه‌ها تا PDF رو نبینن تغییرات مربوط به RLE رو اعمال نمی‌کنن واسه همین لازمه همیشه هر دو رو وارد کنیم.
 
-برای سادگی کار اومدم یه [کد ساده](https://rahmadi89.github.io/RTL-Fixer) نوشتم که این کار رو انجام بده کافیه متن موردنظر توی این کادر وارد بشه و دکمه اصلاح زده بشه:
+برای سادگی کار اومدم یه [کد ساده](https://github.com/rahmadi89/RTL-Fixer) نوشتم که این [کار](https://rahmadi89.github.io/RTL-Fixer) رو انجام بده کافیه متن موردنظر توی این کادر وارد بشه و دکمه اصلاح زده بشه:
 
 <iframe src="https://rahmadi89.github.io/RTL-Fixer" width="100%" height="800" style="border:1px solid #ccc;"></iframe>
 
