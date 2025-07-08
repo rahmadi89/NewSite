@@ -1,7 +1,6 @@
 ---
 Stat: Done
 ---
-
 ## مقدمه
 خیلی وقت‌ها پیش میاد که برنامه‌ای رو اجرا می‌کنیم اما به دلیل اینکه یه فایلی وجود نداره درست اجرا نمیشه، یا مثلا یه برنامه‌ای رو با محیط‌هایی مثل Visual Studio یا QT Creator نوشتیم ولی فقط وقتی از داخل همون محیط اجراش می‌کنیم اجرا میشه و وقتی فایل EXE خروجی رو کپی می‌کنیم توی یه مسیر دیگه، درست اجرا نمیشه و خطاهایی میده که نشون از عدم وجود بعضی فایل‌ها داره.
 
@@ -15,7 +14,9 @@ Stat: Done
 
 تو این یادداشت میخوام آموزش هر دو قسمت رو بنویسم. منبع اصلی این آموزش هم [پایگاه مدیریت دانش QT](https://qatools.knowledgebase.qt.io/misc/using-dependency-walker) هست.
 
-البته بجز ابزار Dependency Walker ابزار دیگه‌ای به اسم [Process Monitor](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon) وجود داره که اون هم به شدت تو این زمینه قویه و میشه بدون دانش تخصصی زیاد ازش استفاده کرد. نحوه استفاده از اون ابزار توی یادداشت [[آنالیز جزئیات رفتار نرم‌افزارها با Process Explorer]] اومده.
+البته بجز ابزار Dependency Walker ابزار دیگه‌ای به اسم [Process Monitor](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon) وجود داره که اون هم به شدت تو این زمینه قویه و میشه بدون دانش تخصصی زیاد ازش استفاده کرد. نحوه استفاده از اون ابزار توی یادداشت [[آنالیز جزئیات رفتار نرم‌افزارها با Process Monitor]] اومده.
+
+البته ابزار راحت‌تری هم هست به اسم [Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer) که اندازه Process Monitor قوی نیست ولی کار باهاش خیلی راحت‌تره و گرافیک ساده‌ای داره. آموزشش توی یادداشت [[نمایش لیست DLL های لود شده در یک پروسس با Process Explorer]] اومده. 
 
 بجز این ابزار، ابزار بسیار قوی‌تری به اسم [Windbg](https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/windbg-overview) هست که دانش تخصصی بیشتری لازم داره و امکانات بسیار بسیار بیشتری در اختیار کاربر میذاره. استفاده از این نرم‌افزار نیاز به آموزش‌های خیلی قوی‌تری داره.
 
@@ -80,32 +81,32 @@ Stat: Done
 وابستگی‌های مستقیم یک فایل اجرایی (DLLهایی که مستقیماً توسط فایل اجرایی استفاده میشن) می‌تونن نشون بدن که برنامه با کدوم **کامپایلر** (و گاهی با کدوم **نسخه از آن کامپایلر**) ساخته شده است:
 به عنوان مثال :
 
-|Dependent DLL|Compiler|Version|
-|---|---|---|
-|MINGWM10.DLL|MinGW|n/a|
-|MSVCRT.DLL|MSVC6|MSVC6, Visual C++/Studio 6|
-|MSVCRT7.DLL|MSVC7|MSVC9, Visual Studio 2008|
-|MSVCR8.DLL|MSVC8|MSVC8, Visual Studio 2005|
-|MSVCR9.DLL|MSVC9|MSVC9, Visual Studio 2008|
-|MSVCRT10.DLL|MSVC10|MSVC10, Visual Studio 2010|
+| Version                    | Compiler | Dependent DLL |
+| -------------------------- | -------- | ------------- |
+| n/a                        | MinGW    | MINGWM10.DLL  |
+| MSVC6, Visual C++/Studio 6 | MSVC6    | MSVCRT.DLL    |
+| MSVC9, Visual Studio 2008  | MSVC7    | MSVCRT7.DLL   |
+| MSVC8, Visual Studio 2005  | MSVC8    | MSVCR8.DLL    |
+| MSVC9, Visual Studio 2008  | MSVC9    | MSVCR9.DLL    |
+| MSVC10, Visual Studio 2010 | MSVC10   | MSVCRT10.DLL  |
 بنابراین با بررسی اینکه به کدوم DLL وابسته هست میشه فهمید با چه ابزار و محیطی ساخته شده.
 
 ## یافتن اطلاعات
 اطلاعات مختلفی از طریق Dependency Walker قابل استخراجه از جمله :
 ![[dependency_walker_provided_information 1.png]]
 
-#1 کتابخانه‌های زمان اجرای کامپایلر (Runtime Libraries of Compiler) - این بخش می‌تونه بگه برنامه با کدوم نسخه از کامپایلر ساخته شده، مثلاً MSVC6، MSVC7، MSVC8، MSVC9، MSVC10 و غیره.
-#1 نوع بیلد - آیا برنامه به صورت Release ساخته شده یا Debug؟  
+مورد #1 کتابخانه‌های زمان اجرای کامپایلر (Runtime Libraries of Compiler) - این بخش می‌تونه بگه برنامه با کدوم نسخه از کامپایلر ساخته شده، مثلاً MSVC6، MSVC7، MSVC8، MSVC9، MSVC10 و غیره.
+مورد #1 نوع بیلد - آیا برنامه به صورت Release ساخته شده یا Debug؟  
 معمولاً اگه Debug باشه، یه "d" به انتهای اسم فایل‌های DLL مربوط به Qt اضافه می‌شه، مثل `QT5CORED.DLL` یا DLLهای runtime ویژوال سی‌پلاس‌پلاس مثل `MSVCP90D.DLL`.
 
 برای مثلا اگه می‌خوای برنامه‌ی Qt رو به صورت Debug بیلد کنی، باید نسخه Debug بسته‌ی Squish for Qt رو هم داشته باشی.
 
-#2 سیمبل‌های اکسپورت‌شده
+مورد #2 سیمبل‌های اکسپورت‌شده
 مثلاً اگه بعد از انتخاب `QtCore4.dll` ببینی که `QObject::setName(...)` داخلش لیست شده، یعنی کتابخانه Qt با ماژول **Qt3Support** فعال شده و کانفیگ شده.
 
-#3 اندازه Word:
+مورد #3 اندازه Word:
 اگه `x86` نوشته باشه یعنی برنامه ۳۲ بیتی هست،  
 و اگه `x64` باشه یعنی ۶۴ بیتی.
 
-#4 ورژن فایل مربوطه
+مورد #4 ورژن فایل مربوطه
 مثلا در عکس مربوطه، ورژن مربوطه به کتابخانه QT ذکر شده است.
