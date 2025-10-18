@@ -1,3 +1,0 @@
-asdkasjdhalsk
-شمنسیتمپ
-
