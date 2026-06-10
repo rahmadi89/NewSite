@@ -119,7 +119,7 @@ https://github.com/TsudaKageyu/minhook/releases/latest
 
 - در این مثال، کتابخانه MinHook برای سیستم‌عامل هدف 32 بیت کپی شده.
 -  اگر کتابخانه Static باشد، تمام کد داخل Hook.dll کامپایل می‌شود و هیچ DLL اضافی لازم نیست.
-- اگر DLL به صورت Dynamic لینک شود، هنگام Load شدن نیاز به `MinHook.x86.dll` دارد. (ِMinHook به صورت داینامیک لینک می‌شود و نیاز است در هنگام اجرا، فایل MinHook.x86.dll کنار فایل Injector.exe یا Victim.exe باشد)
+- اگر DLL به صورت Dynamic لینک شود، هنگام Load شدن نیاز به `MinHook.x86.dll` دارد. (ِMinHook به صورت داینامیک لینک می‌شود و نیاز است در هنگام اجرا، فایل MinHook.x86.dll کنار فایل Victim.exe باشد)
 - فایل MinHook.x86.lib فقط یک Import Library است که فقط یک واسطه است و کد واقعی داخل DLL قرار دارد.
 ---
 ## گام ۳: ساخت Injector
@@ -228,7 +228,7 @@ int main()
 ---
 
 بعد از ساخت هر سه برنامه (Victom.exe و Injector.exe و Hook.dll) ابتدا فایل Hook.dll را در درایو C کپی کنید سپس برنامه Victim.exe را اجرا کنید. با زدن کلید Enter پیام "Hello From Victim" نمایش داده می شود.
-حالا برنامه Injector.exe را اجرا کنید (فایل MinHook.x86.dll کنارش باشد). در صورت انجام موفق عملیات باید پیامی مانند شکل زیر نمایش داده شود:
+حالا برنامه Injector.exe را اجرا کنید (فایل MinHook.x86.dll کنار برنامه Victim.exe باشد). در صورت انجام موفق عملیات باید پیامی مانند شکل زیر نمایش داده شود:
 
 ![[Pasted image 20260610092910.png]]
 
